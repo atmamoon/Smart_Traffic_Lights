@@ -1,0 +1,13 @@
+<Configuration>
+
+<input>
+
+<net-file value="dhanbad.net.xml"/>
+<route-files value="dhanbad.rou.xml"/>
+
+</input>
+<time>
+<begin value="0"/>
+<end value="20000"/>
+</time>
+</Configuration>
