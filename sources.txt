@@ -1,0 +1,3 @@
+https://wiki.openstreetmap.org/wiki/Using_OpenStreetMap
+https://www.youtube.com/watch?v=9MyIABer_NY
+https://sumo.dlr.de/docs/TraCI.html
