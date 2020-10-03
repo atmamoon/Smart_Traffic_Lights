@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 09/27/20 12:44:07 by Eclipse SUMO duarouter Version 1.7.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\narwayaayush\Sumo\2020-09-27-12-43-01\osm.net.xml"/>
+        <route-files value="C:\Users\narwayaayush\Sumo\2020-09-27-12-43-01\osm.tram.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Users\narwayaayush\Sumo\2020-09-27-12-43-01\osm.tram.trips.xml.tmp"/>
+        <write-trips value="true"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="tram_tram" vClass="tram"/>
+    <trip id="tram12" type="tram_tram" depart="1848.63" departLane="best" departSpeed="max" from="143891040#0" to="158785194#2"/>
+    <trip id="tram13" type="tram_tram" depart="2002.68" departLane="best" from="101699676#3" to="22962555#3"/>
+    <trip id="tram21" type="tram_tram" depart="3235.10" departLane="best" departSpeed="max" from="143891040#0" to="301733774#2"/>
+</routes>

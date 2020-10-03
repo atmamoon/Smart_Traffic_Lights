@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- generated on 09/27/20 12:44:17 by Eclipse SUMO duarouter Version 1.7.0
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/duarouterConfiguration.xsd">
+
+    <input>
+        <net-file value="C:\Users\narwayaayush\Sumo\2020-09-27-12-43-01\osm.net.xml"/>
+        <route-files value="C:\Users\narwayaayush\Sumo\2020-09-27-12-43-01\osm.ship.trips.xml"/>
+    </input>
+
+    <output>
+        <output-file value="C:\Users\narwayaayush\Sumo\2020-09-27-12-43-01\osm.ship.trips.xml.tmp"/>
+        <write-trips value="true"/>
+    </output>
+
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+    </time>
+
+    <report>
+        <no-warnings value="true"/>
+        <ignore-errors value="true"/>
+        <no-step-log value="true"/>
+    </report>
+
+</configuration>
+-->
+
+<routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
+    <vType id="ship_ship" vClass="ship"/>
+    <trip id="ship0" type="ship_ship" depart="0.00" departSpeed="max" from="304560803" to="-145662520"/>
+    <trip id="ship1" type="ship_ship" depart="197.41" departSpeed="max" from="159534658#0" to="-145662520"/>
+    <trip id="ship2" type="ship_ship" depart="394.82" departSpeed="max" from="304560803" to="-304560803"/>
+    <trip id="ship3" type="ship_ship" depart="592.23" departSpeed="max" from="309903415" to="-145662520"/>
+    <trip id="ship4" type="ship_ship" depart="789.64" departSpeed="max" from="159534658#0" to="-145662520"/>
+    <trip id="ship5" type="ship_ship" depart="987.05" departSpeed="max" from="-159534658#3" to="-304560803"/>
+    <trip id="ship6" type="ship_ship" depart="1184.46" departSpeed="max" from="-159534658#3" to="-145662520"/>
+    <trip id="ship7" type="ship_ship" depart="1381.87" departSpeed="max" from="304560803" to="-304560803"/>
+    <trip id="ship8" type="ship_ship" depart="1579.28" departSpeed="max" from="-159534658#3" to="-304560803"/>
+    <trip id="ship9" type="ship_ship" depart="1776.69" departSpeed="max" from="309903415" to="-145662520"/>
+    <trip id="ship10" type="ship_ship" depart="1974.10" departSpeed="max" from="309903415" to="-304560803"/>
+    <trip id="ship11" type="ship_ship" depart="2171.51" departSpeed="max" from="159534658#0" to="-145662520"/>
+    <trip id="ship12" type="ship_ship" depart="2368.91" departSpeed="max" from="309903415" to="-159534658#0"/>
+    <trip id="ship13" type="ship_ship" depart="2566.32" departSpeed="max" from="-159534658#3" to="-145662520"/>
+    <trip id="ship14" type="ship_ship" depart="2763.73" departSpeed="max" from="309903415" to="-304560803"/>
+    <trip id="ship15" type="ship_ship" depart="2961.14" departSpeed="max" from="309903415" to="-304560803"/>
+    <trip id="ship16" type="ship_ship" depart="3158.55" departSpeed="max" from="304560803" to="159534658#2"/>
+    <trip id="ship17" type="ship_ship" depart="3355.96" departSpeed="max" from="159534658#0" to="-304560803"/>
+    <trip id="ship18" type="ship_ship" depart="3553.37" departSpeed="max" from="309903415" to="-304560803"/>
+</routes>
