@@ -44,8 +44,8 @@ while traci.simulation.getMinExpectedNumber() > 0:
         tm.addAmbulance(ambulanceID, routeID, viewID, startEdge, endEdge)
         delayTime = 0.15
         isAmbulancePresent = True
-        time.sleep(delayTime)
 
+    time.sleep(delayTime)
     traci.simulationStep()
     step += 1
 
