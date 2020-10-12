@@ -28,16 +28,16 @@
 -->
 
 <routes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/routes_file.xsd">
-     <vType id="truck_emergency" vClass="emergency" color="0,0,1.0" guiShape="emergency">
-	<param key="has.tripinfo.device" value="true"/>
-	<param key="has.bluelight.device" value="true"/>
-     </vType>
 
-     <trip id="truck00" type="truck_emergency" depart="0.00" departLane="best" from="24993933#1" to="-131505631#0"/>
+    <vType id="truck_emergency" vClass="emergency" color="0,0,1.0" guiShape="emergency">
+		<param key="has.tripinfo.device" value="true"/>
+		<param key="has.bluelight.device" value="true"/>
+		<param key="has.rerouting.device" value="true"/>
+    </vType>
     
     <vType id="truck_truck" vClass="emergency" color="0,0,1.0">
-	<param key="has.tripinfo.device" value="true"/>
-     </vType>
+		<param key="has.tripinfo.device" value="true"/>
+    </vType>
 
     <trip id="truck0" type="truck_truck" depart="0.00" departLane="best" from="24993933#1" to="-131505631#0"/>
     <trip id="truck1" type="truck_truck" depart="4.06" departLane="best" from="340498982#8" to="310176513#6"/>
