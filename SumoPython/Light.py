@@ -1,18 +1,20 @@
 import traci
 
 
+def laneToEdge(laneId):
+    return laneId[:len(laneId)-2]
+
+
 class Light:
 
     fromEdge = ""
-    toEdge = ""
     trafficLightId = ""
     programId = ""
     phaseDuration = 0
     greenPhase = ""
     isStateChanged = False
 
-    def __init__(self, fromEdge, toEdge, trafficLightId):
-        self.toEdge = toEdge
+    def __init__(self, fromEdge, trafficLightId):
         self.fromEdge = fromEdge
         self.trafficLightId = trafficLightId
         self.programId = traci.trafficlight.getProgram(self.trafficLightId)
@@ -20,10 +22,14 @@ class Light:
         self.setGreenPhase()
 
     def setGreenPhase(self):
-
-        # Kshitij, your code here
-
-        pass
+        links = traci.trafficlight.getControlledLinks(self.trafficLightId)
+        state = traci.trafficlight.getRedYellowGreenState(self.trafficLightId)
+        N = len(state)
+        for i in range(0, N):
+            if laneToEdge(links[i][0][0]) == self.fromEdge:
+                self.greenPhase += "G"
+            else:
+                self.greenPhase += "r"
 
     def goGreen(self):
         traci.trafficlight.setRedYellowGreenState(self.trafficLightId, self.greenPhase)
