@@ -4,6 +4,7 @@ import traci
 import traciMethods as tm
 import time
 import Light
+import sumolib
 
 # change here  -path to your sumo\tools directory
 sys.path.append(os.path.join('F:\\SUMO\\sumo\\tools'))
@@ -12,12 +13,21 @@ sys.path.append(os.path.join('F:\\SUMO\\sumo\\tools'))
 path_SumoGui = "F:\\bin\\sumo-gui"
 
 # change here
-path_sumocfg_file = "C:\\Users\\narwayaayush\\Sumo\\trial\\osm.sumocfg"
+# path_sumocfg_file = "F:\\SUMO\\sumo\\tools\\2020-10-17-20-16-48\\osm.sumocfg" #0.8
+path_sumocfg_file = "C:\\Users\\narwayaayush\\Sumo\\trial\\osm.sumocfg" #0.72
+
+#change here
+# path_network_file = "F:\\SUMO\\sumo\\tools\\2020-10-17-20-16-48\\osm.net.xml"
+path_network_file = "C:\\Users\\narwayaayush\\Sumo\\trial\\osm.net.xml"
+network = sumolib.net.readNet(path_network_file)
 
 sumoCmd = [path_SumoGui, "-c", path_sumocfg_file]
 
 # change here
-startEdge = '-24241790#2'
+# startEdge = '-4613293'  # 0.76
+startEdge = '-24241790#2' # 0.73
+
+# endEdge = '326116285#2'
 endEdge = '-4588217#1'
 routeID = "ambulanceRoute"
 ambulanceID = "ambulance"
@@ -33,14 +43,14 @@ tLights = []
 edges = []
 allTLIds = []
 isAmbulancePresent = False
+delayTime = 0
 
-while step < 1500:
+while step < 455:
 
     if isAmbulancePresent:
-        traci.vehicle.setSpeed(ambulanceID, traci.vehicle.getMaxSpeed(ambulanceID) * 0.05)
         if last != traci.vehicle.getRoadID(ambulanceID):
             last = traci.vehicle.getRoadID(ambulanceID)
-            if last[len(last)-2] == "#":
+            if last[0] != ":":
                 edges.append(last)
             elif last[1:len(last)-2] in allTLIds:
                 tLights.append(Light.Light(edges[len(edges) - 1], last[1:len(last)-2]))
@@ -48,6 +58,9 @@ while step < 1500:
                 tLights.append(Light.Light(edges[len(edges) - 1], last[1:len(last)-3]))
 
         if traci.vehicle.getRoadID(ambulanceID) == endEdge:
+            initialTime = step
+            print(f'Initial Completion Time = {step}')
+            delayTime = 0
             isAmbulancePresent = False
 
     if step == 100:
@@ -55,7 +68,9 @@ while step < 1500:
         tm.addAmbulance(ambulanceID, routeID, viewID, startEdge, endEdge)
         allTLIds = traci.trafficlight.getIDList()
         edges.append(startEdge)
+        delayTime = 0.1
 
+    time.sleep(delayTime)
     traci.simulationStep()
     step += 1
 
@@ -67,24 +82,26 @@ traci.start(sumoCmd)
 
 step = 0
 delayTime = 0
-light = "cluster_1828018077_1828018093_1828018094_1828018095_1840326399_1840326421_262469034_29123671_29123672_3832550626_3832550632_6795935360_6795935361_6795935362_967017837_967017877"
-links = traci.trafficlight.getControlledLinks(light)
 print("started")
 
-while step < 455:
+while step < 340:
 
     if isAmbulancePresent:
-        tm.control_TLights(ambulanceID, tLights, edges)
+        traci.vehicle.setSpeed(ambulanceID,traci.vehicle.getMaxSpeed(ambulanceID))
+        tm.control_TLights(ambulanceID, tLights, edges, network)
 
         if traci.vehicle.getRoadID(ambulanceID) == endEdge:
+            finalTime = step
+            print(f'Final Completion Time = {step}')
+            print(f"Improvement = {finalTime*100/initialTime}%")
+            delayTime = 0
             isAmbulancePresent = False
 
     if step == 100:
 
         isAmbulancePresent = True
         tm.addAmbulance(ambulanceID, routeID, viewID, startEdge, endEdge)
-        # tLights = tm.findLights(ambulanceID)
-        delayTime = 0.15
+        delayTime = 0.1
 
     time.sleep(delayTime)
     traci.simulationStep()
