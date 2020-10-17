@@ -3,3 +3,4 @@ Video file can be downloaded from https://en.savefrom.net/18/#url=http://youtube
 Any other video file can also be used. Make sure to save it with name "test" and file type to be mp4, in Yolo directory on your PC.
 Weights file can be downloaded from https://pjreddie.com/darknet/yolo/. Download the weight file for "YOLOv3-608". No need to download the cfg file. Also save this in Yolo directory on your PC.
 Run the Object_Detection.py file
+Press ESC key to exit
